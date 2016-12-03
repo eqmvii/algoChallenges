@@ -3,9 +3,93 @@
 console.log("Begin algorithm testing");
 console.log();
 
-//Roman Numberal Converter: Convert a number into a roman numeral (because of reasons it will always be 3,999 or less)
 
-/*function convertToRoman(num) {
+/*//Pig Latin doing function
+function translatePigLatin(str) {
+    var modStr = str;
+    function startVowel(testStr) {
+        var tester = testStr.substring(0,1).toLowerCase();
+        //console.log(tester);
+        return tester === 'a' || tester === 'e' || tester === 'i' || tester === 'o' || tester === 'u' || tester === 'y' || false;
+    }
+    if (startVowel(str))
+    {
+        modStr = str + "w";
+    }
+    else
+    {
+        while (!startVowel(modStr)) {
+            modStr = modStr.substring(1) + modStr.substring(0, 1);
+        }
+    }
+    modStr += "ay";
+    return modStr;
+}
+console.log(translatePigLatin("glove"));*/
+
+/*//Search and replace:
+function myReplace(str, before, after) {
+    console.log(str);
+
+    //Check to see if you need to uppercase the first letter
+    if (before[0] === before[0].toUpperCase())
+    {
+        //console.log("You're in trouble mister");
+        var first = after[0].toUpperCase();
+        var second = after.substring(1);
+        after = first + second;
+        //console.log(after);
+    }
+    str = str.replace(before, after);
+    //console.log(str);
+    return str;
+}
+myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped");*/
+
+/*//Wherefore art thou: return matching properties from an array 
+function whatIsInAName(collection, source) {
+    // What's in a name?
+    var arr = [];
+    // Only change code below this line
+    var propsToTest = Object.keys(source);
+    console.log(propsToTest);
+    var colLength = collection.length;
+    var propsLength = propsToTest.length;
+    var rejector = 0;
+
+    //Loop through the array of objects to test
+    for (var a = 0; a < colLength; a++)
+    {
+        //loop through the array of keys in the testing object
+        for (var b = 0; b < propsLength; b++) 
+        {
+            if (collection[a][propsToTest[b]] !== source[propsToTest[b]])
+            {
+                console.log("It's not a hit!");
+                rejector++; // signal rejection if a match fails
+                b = (propsLength - 1);
+            }
+            if (b === (propsLength - 1))
+            {
+                if (rejector === 0)
+                {
+                    arr.push(collection[a]);
+                }
+                rejector = 0;
+            }
+        }
+    }
+    console.log("Arr is: " + arr);
+    // Only change code above this line
+    return arr;
+}
+whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });*/
+
+
+
+
+/*//Roman Numberal Converter: Convert a number into a roman numeral (because of reasons it will always be 3,999 or less)
+function convertToRoman(num) {
     if (num > 3999 || num < 1)
         return "I can't convert this number.";
     var answer = "";
@@ -31,7 +115,6 @@ console.log("Answer is below: ");
 console.log(convertToRoman(2450));*/
 
 /*//Diff Two Arrays - compare two arrays and return unique hits 
-
 function diffArray(arr1, arr2) {
     var newArr = arr1.filter(function (value) {
         if (arr2.indexOf(value) === -1) {
@@ -56,7 +139,6 @@ console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]));*/
 
 
 /*//Sum All Numbers in a Range - take an array of two numbers, return the sum of those two numbers and all numbers inbetween them
-
 function sumAll(arr) {
     var total = 0;
     var large = Math.max(arr[0], arr[1]);
